@@ -17,25 +17,18 @@ public class PathClass {
 
     private String getWsBasePath() throws IOException {
         StringBuilder birl = new StringBuilder();
-        birl.append(PropertySource.getProperty("resysclagem.service.protocol", context));
+        birl.append(PropertySource.getProperty("oscars.launch.protocol", context));
         birl.append("://");
-        birl.append(PropertySource.getProperty("resysclagem.service.host", context));
+        birl.append(PropertySource.getProperty("oscars.launch.host", context));
         birl.append(":");
-        birl.append(PropertySource.getProperty("resysclagem.service.port", context));
+        birl.append(PropertySource.getProperty("oscars.launch.port", context));
         return birl.toString();
     }
 
     public String getServerPath() throws IOException {
         StringBuilder birl = new StringBuilder();
         birl.append(this.getWsBasePath());
-        birl.append(PropertySource.getProperty("resysclagem.service.ws", context));
-        return birl.toString();
-    }
-
-    public String getFilePath() throws IOException {
-        StringBuilder birl = new StringBuilder();
-        birl.append(this.getWsBasePath());
-        birl.append(PropertySource.getProperty("resysclagem.service.file", context));
+        birl.append(PropertySource.getProperty("oscars.service.path", context));
         return birl.toString();
     }
 

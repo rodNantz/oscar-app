@@ -17,6 +17,5 @@ public class PropertySource {
         InputStream inputStream = assetManager.open("mobile.properties");
         properties.load(inputStream);
         return properties.getProperty(key);
-
     }
 }
