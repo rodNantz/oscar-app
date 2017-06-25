@@ -1,10 +1,12 @@
 package oscar.go.com.oscarapp.diretor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -16,7 +18,8 @@ import oscar.go.com.oscarapp.classes.Diretor;
  */
 public class DiretorListViewAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Diretor> diretoresList = new ArrayList<>();
+    private ArrayList<Diretor> diretoresList;
+    private Diretor diretorItem;
 
     public DiretorListViewAdapter(Context context, ArrayList<Diretor> diretoresList) {
         this.context = context;
@@ -25,7 +28,7 @@ public class DiretorListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return diretoresList.size();
     }
 
     @Override
@@ -39,9 +42,26 @@ public class DiretorListViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.diretor_item, parent, false);
 
-        return null;
+        TextView nome;
+
+        nome = (TextView) view.findViewById(R.id.nomeDiretorTV);
+
+        diretorItem = diretoresList.get(position);
+        nome.setText(diretorItem.getNome());
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                diretorItem = diretoresList.get(position);
+                Intent intent = new Intent(context, DiretorActivity.class);
+                intent.putExtra("diretor", diretorItem);
+                context.startActivity(intent);
+            }
+        });
+
+        return view;
     }
 }

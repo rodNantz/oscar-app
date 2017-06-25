@@ -72,12 +72,6 @@ public class ListaFilmesActivity extends Activity {
             if(jsonStr != null){
                 CandidatosFilme filmeObj = gson.fromJson(jsonStr, CandidatosFilme.class);
                 infoFilmes = filmeObj.getFilme();
-                /*for(Filme f : filmeObj.getFilme()){
-                    int id = f.getId();
-                    String nome = f.getNome();
-                    String genero = f.getGenero();
-                    String foto = f.getFoto();
-                }*/
             }else{
                 runOnUiThread(new Runnable() {
                     @Override

@@ -11,11 +11,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Nome do diretor"
-        android:textSize="36sp"
+        android:textSize="30sp"
+        android:maxWidth="300dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="56dp" />
+        android:layout_marginTop="121dp"
+        app:layout_constraintHorizontal_bias="0.503" />
 
     <Button
         android:id="@+id/btnVotarDiretor"
@@ -24,6 +26,16 @@
         android:text="Votar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="279dp"
+        android:layout_marginTop="243dp"
         app:layout_constraintTop_toBottomOf="@+id/nomeDTV" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diretor:"
+        android:textSize="30sp"
+        android:layout_marginLeft="143dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="47dp" />
 </android.support.constraint.ConstraintLayout>

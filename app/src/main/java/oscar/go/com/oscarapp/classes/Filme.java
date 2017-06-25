@@ -1,9 +1,11 @@
 package oscar.go.com.oscarapp.classes;
 
+import java.io.Serializable;
+
 /**
  * Created by Rebeca de Melo on 25/06/2017.
  */
-public class Filme {
+public class Filme implements Serializable {
     private int id;
     private String nome;
     private String genero;

@@ -64,12 +64,7 @@ public class ListaDiretorActivity extends AppCompatActivity {
 
             if(jsonStr != null){
                 CandidatosDiretor diretorObj = gson.fromJson(jsonStr, CandidatosDiretor.class);
-                infoDiretor = diretorObj.getDiretores();
-                /*for(Diretor d : diretorObj.getDiretores()){
-                    long id = d.getId();
-                    String nome = d.getNome();
-                }*/
-
+                infoDiretor = diretorObj.getDiretor();
             }else{
                 runOnUiThread(new Runnable() {
                     @Override
@@ -91,7 +86,7 @@ public class ListaDiretorActivity extends AppCompatActivity {
                 pDialog.dismiss();
             }
 
-            list = (ListView) findViewById(R.id.listFilme);
+            list = (ListView) findViewById(R.id.listDiretor);
             adapter = new DiretorListViewAdapter(ListaDiretorActivity.this, infoDiretor);
             list.setAdapter(adapter);
         }

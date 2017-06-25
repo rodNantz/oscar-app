@@ -1,6 +1,7 @@
 package oscar.go.com.oscarapp.filme;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import oscar.go.com.oscarapp.classes.Filme;
 public class FilmeListViewAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Filme> filmesList;
+    private Filme filmeItem;
 
     public FilmeListViewAdapter(Context context, ArrayList<Filme> filmesList) {
         this.context = context;
@@ -43,7 +45,7 @@ public class FilmeListViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.filme_item, parent, false);
 
         TextView nome;
@@ -54,10 +56,20 @@ public class FilmeListViewAdapter extends BaseAdapter {
         genero = (TextView) view.findViewById(R.id.generoTV);
         foto = (ImageView) view.findViewById(R.id.posterIV);
 
-        Filme filmeItem = filmesList.get(position);
+        filmeItem = filmesList.get(position);
         nome.setText(filmeItem.getNome());
         genero.setText(filmeItem.getGenero());
         Picasso.with(context).load(filmeItem.getFoto()).into(foto);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filmeItem = filmesList.get(position);
+                Intent intent = new Intent(context, FilmeActivity.class);
+                intent.putExtra("filme", filmeItem);
+                context.startActivity(intent);
+            }
+        });
 
         return view;
     }

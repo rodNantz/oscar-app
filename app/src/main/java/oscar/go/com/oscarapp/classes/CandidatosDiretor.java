@@ -6,17 +6,17 @@ import java.util.ArrayList;
  * Created by Rebeca de Melo on 25/06/2017.
  */
 public class CandidatosDiretor {
-    private ArrayList<Diretor> diretores;
+    private ArrayList<Diretor> diretor;
 
-    public CandidatosDiretor(ArrayList<Diretor> diretores) {
-        this.diretores = diretores;
+    public CandidatosDiretor(ArrayList<Diretor> diretor) {
+        this.diretor = diretor;
     }
 
-    public ArrayList<Diretor> getDiretores() {
-        return diretores;
+    public ArrayList<Diretor> getDiretor() {
+        return diretor;
     }
 
-    public void setDiretores(ArrayList<Diretor> diretores) {
-        this.diretores = diretores;
+    public void setDiretor(ArrayList<Diretor> diretor) {
+        this.diretor = diretor;
     }
 }
