@@ -3,14 +3,14 @@ package oscar.go.com.oscarapp.classes;
 /**
  * Created by Rebeca de Melo on 25/06/2017.
  */
-public class Genero {
+public class Diretor {
     private int id;
     private String nome;
 
-    public Genero() {
+    public Diretor() {
     }
 
-    public Genero(int id, String nome) {
+    public Diretor(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }

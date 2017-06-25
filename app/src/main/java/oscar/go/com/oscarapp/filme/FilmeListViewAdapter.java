@@ -20,8 +20,7 @@ import oscar.go.com.oscarapp.classes.Filme;
  */
 public class FilmeListViewAdapter extends BaseAdapter {
     private Context context;
-    private LayoutInflater inflater;
-    private ArrayList<Filme> filmesList = new ArrayList<>();
+    private ArrayList<Filme> filmesList;
 
     public FilmeListViewAdapter(Context context, ArrayList<Filme> filmesList) {
         this.context = context;
@@ -30,7 +29,7 @@ public class FilmeListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return filmesList.size();
     }
 
     @Override

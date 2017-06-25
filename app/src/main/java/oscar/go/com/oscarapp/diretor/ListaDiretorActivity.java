@@ -1,6 +1,5 @@
-package oscar.go.com.oscarapp.filme;
+package oscar.go.com.oscarapp.diretor;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -9,37 +8,31 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import oscar.go.com.oscarapp.R;
-import oscar.go.com.oscarapp.classes.CandidatosFilme;
-import oscar.go.com.oscarapp.classes.Filme;
+import oscar.go.com.oscarapp.classes.CandidatosDiretor;
+import oscar.go.com.oscarapp.classes.Diretor;
 import oscar.go.com.oscarapp.classes.SessionManager;
 import oscar.go.com.oscarapp.utilities.HttpHandler;
 
-public class ListaFilmesActivity extends Activity {
-
+public class ListaDiretorActivity extends AppCompatActivity {
     private SessionManager session;
     private ProgressDialog pDialog;
     private ListView list;
-    private FilmeListViewAdapter adapter;
+    private DiretorListViewAdapter adapter;
     private int codU;
     private String userName;
     private Gson gson = new Gson();
-    private ArrayList<Filme> infoFilmes = new ArrayList<>();
-    private final String url = "https://dl.dropboxusercontent.com/u/40990541/filme.json";
+    private ArrayList<Diretor> infoDiretor = new ArrayList<>();
+    private final String url = "https://dl.dropboxusercontent.com/u/40990541/diretor.json";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_filmes);
+        setContentView(R.layout.activity_lista_diretor);
 
         /*session = new SessionManager(this);
         session.checkLogin();
@@ -48,16 +41,16 @@ public class ListaFilmesActivity extends Activity {
         codU = Integer.parseInt(userLogged.get(SessionManager.KEY_CODU));
         userName = userLogged.get(SessionManager.KEY_USER);*/
 
-        new GetFilmes().execute();
+        new GetDiretores().execute();
     }
 
-    private class GetFilmes extends AsyncTask<Void, Void, Void> {
+    private class GetDiretores extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(ListaFilmesActivity.this);
+            pDialog = new ProgressDialog(ListaDiretorActivity.this);
             pDialog.setMessage("Por favor, aguarde...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -70,14 +63,13 @@ public class ListaFilmesActivity extends Activity {
             String jsonStr = sh.makeServiceCall(url, "GET", null);
 
             if(jsonStr != null){
-                CandidatosFilme filmeObj = gson.fromJson(jsonStr, CandidatosFilme.class);
-                infoFilmes = filmeObj.getFilme();
-                /*for(Filme f : filmeObj.getFilme()){
-                    int id = f.getId();
-                    String nome = f.getNome();
-                    String genero = f.getGenero();
-                    String foto = f.getFoto();
+                CandidatosDiretor diretorObj = gson.fromJson(jsonStr, CandidatosDiretor.class);
+                infoDiretor = diretorObj.getDiretores();
+                /*for(Diretor d : diretorObj.getDiretores()){
+                    long id = d.getId();
+                    String nome = d.getNome();
                 }*/
+
             }else{
                 runOnUiThread(new Runnable() {
                     @Override
@@ -100,7 +92,7 @@ public class ListaFilmesActivity extends Activity {
             }
 
             list = (ListView) findViewById(R.id.listFilme);
-            adapter = new FilmeListViewAdapter(ListaFilmesActivity.this, infoFilmes);
+            adapter = new DiretorListViewAdapter(ListaDiretorActivity.this, infoDiretor);
             list.setAdapter(adapter);
         }
     }
