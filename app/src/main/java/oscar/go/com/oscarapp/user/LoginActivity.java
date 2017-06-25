@@ -1,4 +1,4 @@
-package oscar.go.com.oscarapp;
+package oscar.go.com.oscarapp.user;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -22,12 +22,12 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import oscar.go.com.oscarapp.MainActivity;
+import oscar.go.com.oscarapp.R;
 import oscar.go.com.oscarapp.classes.SessionManager;
 import oscar.go.com.oscarapp.classes.User;
 import oscar.go.com.oscarapp.utilities.MsgResponse;
 import oscar.go.com.oscarapp.utilities.PathClass;
-
-import static android.R.attr.path;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText user;

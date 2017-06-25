@@ -14,11 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".filme.ListaFilmesActivity">
-
-        </activity>
-        <activity android:name=".diretor.ListaDiretorActivity" >
+        <activity android:name=".user.LoginActivity" />
+        <activity android:name=".filme.ListaFilmesActivity"></activity>
+        <activity android:name=".diretor.ListaDiretorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".filme.FilmeActivity" />
-        <activity android:name=".diretor.DiretorActivity"></activity>
+        <activity android:name=".diretor.DiretorActivity" />
+        <activity android:name=".voto.VotoActivity"></activity>
     </application>
 
 </manifest>

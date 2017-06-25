@@ -7,7 +7,7 @@ import android.content.SharedPreferences.Editor;
 
 import java.util.HashMap;
 
-import oscar.go.com.oscarapp.LoginActivity;
+import oscar.go.com.oscarapp.user.LoginActivity;
 
 /**
  * Created by Rebeca de Melo on 24/06/2017.
@@ -22,6 +22,8 @@ public class SessionManager {
     public static final String IS_LOGGED = "Logged";
     public static final String KEY_CODU = "codU";
     public static final String KEY_USER = "user";
+    public static final String KEY_FILME = "filme";
+    public static final String KEY_DIRETOR = "diretor";
 
     public SessionManager(Context context){
         this._context = context;
@@ -43,6 +45,10 @@ public class SessionManager {
         usuario.put(KEY_USER, preferences.getString(KEY_USER, null));
 
         return usuario;
+    }
+
+    public void updateVoto(){
+
     }
 
     public void checkLogin(){
