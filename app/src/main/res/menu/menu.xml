@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_filme"
+        android:orderInCategory="100"
+        android:title="Votar Filme" />
+    <item
+        android:id="@+id/menu_diretor"
+        android:orderInCategory="100"
+        android:title="Votar Diretor" />
+    <item
+        android:id="@+id/confirmaVoto"
+        android:orderInCategory="100"
+        android:title="Confirmar" />
+    <item
+        android:id="@+id/sair"
+        android:orderInCategory="100"
+        android:title="Sair" />
+</menu>
