@@ -3,7 +3,7 @@ package oscar.go.com.oscarapp.classes;
 import java.util.ArrayList;
 
 /**
- * Created by Rebeca de Melo on 25/06/2017.
+ * Created by rodtw on 25/06/2017.
  */
 public class CandidatosFilme {
     private ArrayList<Filme> filme;

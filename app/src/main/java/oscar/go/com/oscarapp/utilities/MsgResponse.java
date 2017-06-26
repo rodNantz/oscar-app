@@ -1,7 +1,7 @@
 package oscar.go.com.oscarapp.utilities;
 
 /**
- * Created by Rebeca de Melo on 24/06/2017.
+ * Created by rodtw on 24/06/2017.
  */
 public class MsgResponse {
     private String action;

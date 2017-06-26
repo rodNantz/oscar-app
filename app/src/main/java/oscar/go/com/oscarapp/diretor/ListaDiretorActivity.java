@@ -27,6 +27,7 @@ public class ListaDiretorActivity extends AppCompatActivity {
     private Gson gson = new Gson();
     private ArrayList<Diretor> infoDiretor = new ArrayList<>();
     private final String url = "https://dl.dropboxusercontent.com/u/40990541/diretor.json";
+    private final String url2 = "https://api.myjson.com/bins/l4j1v";
 
 
     @Override
@@ -60,7 +61,11 @@ public class ListaDiretorActivity extends AppCompatActivity {
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
 
-            String jsonStr = sh.makeServiceCall(url, "GET", null);
+            String jsonStr = jsonStr = sh.makeServiceCall(url, "GET", null);
+
+            if(jsonStr == null){
+                jsonStr = sh.makeServiceCall(url2, "GET", null);
+            }
 
             if(jsonStr != null){
                 CandidatosDiretor diretorObj = gson.fromJson(jsonStr, CandidatosDiretor.class);

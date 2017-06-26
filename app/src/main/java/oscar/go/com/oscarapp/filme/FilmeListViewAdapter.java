@@ -17,7 +17,7 @@ import oscar.go.com.oscarapp.R;
 import oscar.go.com.oscarapp.classes.Filme;
 
 /**
- * Created by Rebeca de Melo on 25/06/2017.
+ * Created by rodtw on 25/06/2017.
  */
 public class FilmeListViewAdapter extends BaseAdapter {
     private Context context;

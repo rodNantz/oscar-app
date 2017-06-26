@@ -1,7 +1,7 @@
 package oscar.go.com.oscarapp.classes;
 
 /**
- * Created by Rebeca de Melo on 24/06/2017.
+ * Created by rodtw on 24/06/2017.
  */
 public class User {
     private long codU;

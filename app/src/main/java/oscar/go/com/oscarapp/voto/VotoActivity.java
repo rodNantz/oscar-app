@@ -87,7 +87,7 @@ public class VotoActivity extends AppCompatActivity {
         nomeDiretor = (TextView) findViewById(R.id.nomeDiretorVoto);
         votar = (Button) findViewById(R.id.btnConfirmaVoto);
 
-        if (filmeVoto != null && diretorVoto != null){
+        if (codU != 0 && filmeVoto != null && diretorVoto != null){
             nomeFilme.setText(filmeVoto.getNome());
             genero.setText(filmeVoto.getGenero());
             Picasso.with(this).load(filmeVoto.getFoto()).into(poster);
@@ -97,20 +97,23 @@ public class VotoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if(!voted){
-                        confirmaVoto();
+                        if(codU != 0 && filmeVoto.getId() != 0  && diretorVoto.getId() != 0) {
+                            confirmaVoto();
+                        } else {
+                            Toast.makeText(VotoActivity.this,
+                                    "Escolha um filme e um diretor!",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        }
                     } else {
-                        Toast.makeText(getApplicationContext(),
-                                "Voto não computado!",
-                                Toast.LENGTH_LONG)
-                                .show();
                         alertDialog = new AlertDialog.Builder(VotoActivity.this).create();
                         alertDialog.setTitle("Voto não realizado!");
                         alertDialog.setMessage("Não é possível votar mais de uma vez.");
                         alertDialog.setButton(Dialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getApplicationContext(),
-                                        "Voto computado!",
+                                Toast.makeText(VotoActivity.this,
+                                        "Voto não computado!",
                                         Toast.LENGTH_LONG)
                                         .show();
                             }
@@ -146,6 +149,10 @@ public class VotoActivity extends AppCompatActivity {
                                                 "Voto realizado!",
                                                 Toast.LENGTH_LONG)
                                                 .show();
+                                        /*
+                                        TextView tvVote = (TextView) findViewById(R.id.tvVote);
+                                        tvVote.setText("Você já votou!");
+                                        */
                                     }
                                 });
                                 alertDialog.show();

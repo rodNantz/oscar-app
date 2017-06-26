@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * Created by Rebeca de Melo on 02/05/2017.
+ * Created by rodtw on 24/06/2017.
  */
 public class PropertySource {
     public static String getProperty(String key, Context context) throws IOException {

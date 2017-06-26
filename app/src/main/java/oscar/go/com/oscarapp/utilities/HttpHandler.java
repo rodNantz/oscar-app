@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Rebeca de Melo on 25/06/2017.
+ * Created by rodtw on 25/06/2017.
  */
 public class HttpHandler {
 

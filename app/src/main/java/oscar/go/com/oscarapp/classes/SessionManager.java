@@ -12,7 +12,7 @@ import java.util.HashMap;
 import oscar.go.com.oscarapp.user.LoginActivity;
 
 /**
- * Created by Rebeca de Melo on 24/06/2017.
+ * Created by rodtw on 24/06/2017.
  */
 public class SessionManager {
 

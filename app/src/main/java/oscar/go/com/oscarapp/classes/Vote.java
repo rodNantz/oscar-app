@@ -1,7 +1,7 @@
 package oscar.go.com.oscarapp.classes;
 
 /**
- * Created by Rebeca de Melo on 26/06/2017.
+ * Created by rodtw on 26/06/2017.
  */
 public class Vote {
     private User user;
