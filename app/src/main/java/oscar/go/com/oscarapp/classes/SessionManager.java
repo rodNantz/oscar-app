@@ -50,10 +50,10 @@ public class SessionManager {
     public HashMap<String, String> getInfoUsuario(){
         HashMap<String, String> usuario = new HashMap<>();
 
-        usuario.put(KEY_CODU, String.valueOf(preferences.getInt(KEY_CODU, 0)));
+        usuario.put(KEY_CODU, String.valueOf(preferences.getLong(KEY_CODU, 0)));
         usuario.put(KEY_USER, preferences.getString(KEY_USER, null));
         usuario.put(KEY_TOKEN, preferences.getString(KEY_TOKEN, null));
-        usuario.put(KEY_VOTED, preferences.getString(KEY_VOTED, null));
+        usuario.put(KEY_VOTED, String.valueOf(preferences.getBoolean(KEY_VOTED, false)));
         usuario.put(KEY_FILME, preferences.getString(KEY_FILME, null));
         usuario.put(KEY_DIRETOR, preferences.getString(KEY_DIRETOR, null));
 

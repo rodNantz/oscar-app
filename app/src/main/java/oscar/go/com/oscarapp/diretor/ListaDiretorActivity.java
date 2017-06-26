@@ -22,7 +22,7 @@ public class ListaDiretorActivity extends AppCompatActivity {
     private ProgressDialog pDialog;
     private ListView list;
     private DiretorListViewAdapter adapter;
-    private int codU;
+    private long codU;
     private String userName;
     private Gson gson = new Gson();
     private ArrayList<Diretor> infoDiretor = new ArrayList<>();
@@ -34,10 +34,10 @@ public class ListaDiretorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_diretor);
 
-        /*session = new SessionManager(this);
+        session = new SessionManager(this);
         session.checkLogin();
 
-        HashMap<String, String> userLogged = session.getInfoUsuario();
+        /*HashMap<String, String> userLogged = session.getInfoUsuario();
         codU = Integer.parseInt(userLogged.get(SessionManager.KEY_CODU));
         userName = userLogged.get(SessionManager.KEY_USER);*/
 

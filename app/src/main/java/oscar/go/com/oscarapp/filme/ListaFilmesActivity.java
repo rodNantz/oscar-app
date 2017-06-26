@@ -27,7 +27,7 @@ import oscar.go.com.oscarapp.utilities.HttpHandler;
 public class ListaFilmesActivity extends Activity {
 
     private SessionManager session;
-    private int codU;
+    private long codU;
     private String userName;
     private ProgressDialog pDialog;
     private ListView list;

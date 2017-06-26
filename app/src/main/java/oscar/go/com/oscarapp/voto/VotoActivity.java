@@ -45,7 +45,7 @@ public class VotoActivity extends AppCompatActivity {
     private AlertDialog alertDialog;
     // session
     private SessionManager session;
-    private int codU;
+    private long codU;
     private String userName;
     private String filmeStr;
     private String diretorStr;
@@ -71,7 +71,7 @@ public class VotoActivity extends AppCompatActivity {
         session.checkLogin();
 
         HashMap<String, String> userLogged = session.getInfoUsuario();
-        codU = Integer.parseInt(userLogged.get(SessionManager.KEY_CODU));
+        codU = Long.parseLong(userLogged.get(SessionManager.KEY_CODU));
         userName = userLogged.get(SessionManager.KEY_USER);
         token = userLogged.get(SessionManager.KEY_TOKEN);
         voted = Boolean.parseBoolean(userLogged.get(SessionManager.KEY_VOTED));

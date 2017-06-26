@@ -3,6 +3,7 @@ package oscar.go.com.oscarapp.diretor;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,10 +25,11 @@ public class DiretorActivity extends AppCompatActivity {
     private Diretor diretor;
     // session
     private SessionManager session;
-    private int codU;
+    private long codU;
     private String userName;
     private String filmeStr;
     private String diretorStr;
+    private boolean voted;
     private Filme filmeVoto;
     private Diretor diretorVoto;
     private Gson gson = new Gson();
@@ -41,11 +43,11 @@ public class DiretorActivity extends AppCompatActivity {
         session.checkLogin();
 
         HashMap<String, String> userLogged = session.getInfoUsuario();
-        codU = Integer.parseInt(userLogged.get(SessionManager.KEY_CODU));
+        codU = Long.parseLong(userLogged.get(SessionManager.KEY_CODU));
         userName = userLogged.get(SessionManager.KEY_USER);
         filmeStr = userLogged.get(SessionManager.KEY_FILME);
         diretorStr = userLogged.get(SessionManager.KEY_DIRETOR);
-
+        voted = Boolean.parseBoolean(userLogged.get(SessionManager.KEY_VOTED));
         filmeVoto = gson.fromJson(filmeStr, Filme.class);
         diretorVoto = gson.fromJson(diretorStr, Diretor.class);
 
@@ -57,14 +59,17 @@ public class DiretorActivity extends AppCompatActivity {
 
         nomeDiretor.setText(diretor.getNome());
 
+        Log.i("votoDiretor", "codU: " + codU +
+                " userName: " + userName +
+                " filmeVoto: " + filmeVoto.getId()
+                + " " + filmeVoto.getNome()
+                + " diretor: " + diretor.getId()
+                + " " + diretor.getId());
+
         votar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                session.updateVoto(filmeVoto, diretor);
-                // pegar usuario
-                // a id
-                // salvar na sessao
-                // ir pra main activity
+                session.updateVoto(voted, filmeVoto, diretor);
                 Intent i = new Intent(DiretorActivity.this, MainActivity.class);
                 startActivity(i);
             }
