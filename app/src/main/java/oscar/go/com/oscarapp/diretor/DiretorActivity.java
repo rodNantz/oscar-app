@@ -28,6 +28,8 @@ public class DiretorActivity extends AppCompatActivity {
     private String userName;
     private String filmeStr;
     private String diretorStr;
+    private String votedStr;
+    private boolean voted;
     private Filme filmeVoto;
     private Diretor diretorVoto;
     private Gson gson = new Gson();
@@ -45,7 +47,9 @@ public class DiretorActivity extends AppCompatActivity {
         userName = userLogged.get(SessionManager.KEY_USER);
         filmeStr = userLogged.get(SessionManager.KEY_FILME);
         diretorStr = userLogged.get(SessionManager.KEY_DIRETOR);
+        votedStr = userLogged.get(SessionManager.KEY_VOTED);
 
+        voted = gson.fromJson(votedStr, boolean.class);
         filmeVoto = gson.fromJson(filmeStr, Filme.class);
         diretorVoto = gson.fromJson(diretorStr, Diretor.class);
 
@@ -60,7 +64,7 @@ public class DiretorActivity extends AppCompatActivity {
         votar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                session.updateVoto(filmeVoto, diretor);
+                session.updateVoto(voted, filmeVoto, diretor);
                 // pegar usuario
                 // a id
                 // salvar na sessao
