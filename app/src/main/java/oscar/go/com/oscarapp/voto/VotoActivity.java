@@ -99,7 +99,11 @@ public class VotoActivity extends AppCompatActivity {
                     if(!voted){
                         confirmaVoto();
                     } else {
-                        alertDialog = new AlertDialog.Builder(getApplicationContext()).create();
+                        Toast.makeText(getApplicationContext(),
+                                "Voto não computado!",
+                                Toast.LENGTH_LONG)
+                                .show();
+                        alertDialog = new AlertDialog.Builder(VotoActivity.this).create();
                         alertDialog.setTitle("Voto não realizado!");
                         alertDialog.setMessage("Não é possível votar mais de uma vez.");
                         alertDialog.setButton(Dialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
@@ -132,7 +136,7 @@ public class VotoActivity extends AppCompatActivity {
                             msgResponse = gson.fromJson(response.toString(), MsgResponse.class);
                             if(msgResponse.isStatus()){
                                 session.updateVoto(true, filmeVoto, diretorVoto);
-                                alertDialog = new AlertDialog.Builder(getApplicationContext()).create();
+                                alertDialog = new AlertDialog.Builder(VotoActivity.this).create();
                                 alertDialog.setTitle("Voto Confirmado!");
                                 alertDialog.setMessage(msgResponse.getMessage());
                                 alertDialog.setButton(Dialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
@@ -152,7 +156,7 @@ public class VotoActivity extends AppCompatActivity {
                                 alertDialog.setButton(Dialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Toast.makeText(getApplicationContext(),
+                                        Toast.makeText(VotoActivity.this,
                                                 "Voto não concluído!",
                                                 Toast.LENGTH_LONG)
                                                 .show();
