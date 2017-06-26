@@ -17,18 +17,24 @@ public class PathClass {
 
     private String getWsBasePath() throws IOException {
         StringBuilder birl = new StringBuilder();
-        birl.append(PropertySource.getProperty("oscars.launch.protocol", context));
+        birl.append(PropertySource.getProperty("oscars.ws.protocol", context));
         birl.append("://");
-        birl.append(PropertySource.getProperty("oscars.launch.host", context));
+        birl.append(PropertySource.getProperty("oscars.ws.host", context));
         birl.append(":");
-        birl.append(PropertySource.getProperty("oscars.launch.port", context));
+        birl.append(PropertySource.getProperty("oscars.ws.port", context));
         return birl.toString();
     }
 
+    /**
+     * Método para pegar caminho completo do WS, por exemplo: http://localhost:8008/server
+     *
+     * @return
+     * @throws IOException
+     */
     public String getServerPath() throws IOException {
         StringBuilder birl = new StringBuilder();
         birl.append(this.getWsBasePath());
-        birl.append(PropertySource.getProperty("oscars.service.path", context));
+        birl.append(PropertySource.getProperty("oscars.ws.services", context));
         return birl.toString();
     }
 

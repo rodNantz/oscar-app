@@ -66,7 +66,9 @@ public class LoginActivity extends AppCompatActivity {
         String senhaLogin = password.getText().toString();
         if(validaCampos(usuarioLogin, senhaLogin)){
 
+
             usuario = new User(usuarioLogin, senhaLogin);
+
 
             pDialog = new ProgressDialog(this);
             pDialog.setMessage("Logando...");
