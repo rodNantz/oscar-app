@@ -24,6 +24,8 @@ import java.io.IOException;
 
 import oscar.go.com.oscarapp.MainActivity;
 import oscar.go.com.oscarapp.R;
+import oscar.go.com.oscarapp.classes.Diretor;
+import oscar.go.com.oscarapp.classes.Filme;
 import oscar.go.com.oscarapp.classes.SessionManager;
 import oscar.go.com.oscarapp.classes.User;
 import oscar.go.com.oscarapp.utilities.MsgResponse;
@@ -64,11 +66,9 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUsuario(){
         String usuarioLogin = user.getText().toString();
         String senhaLogin = password.getText().toString();
-        if(validaCampos(usuarioLogin, senhaLogin)){
-
+        if(!validaCampos(usuarioLogin, senhaLogin)){
 
             usuario = new User(usuarioLogin, senhaLogin);
-
 
             pDialog = new ProgressDialog(this);
             pDialog.setMessage("Logando...");
@@ -83,53 +83,57 @@ public class LoginActivity extends AppCompatActivity {
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
+                                hideProgressDialog();
                                 msgResponse = gson.fromJson(response.toString(), MsgResponse.class);
                                 User user = gson.fromJson(msgResponse.getExtra(), User.class);
                                 if(msgResponse.isStatus()){
-                                    long codU = user.getCodU();
-                                    String userName = user.getUser();
-                                    session.loginSession(codU, userName);
+                                    session.loginSession(user.getCodU(), user.getUser(), user.getToken(), user.isVoted(),new Filme(), new Diretor());
                                     pDialog.hide();
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
+                                } else {
+                                    Toast.makeText(LoginActivity.this,
+                                            msgResponse.getMessage(),
+                                            Toast.LENGTH_LONG)
+                                            .show();
                                 }
                             }
                         },
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
+                                hideProgressDialog();
                                 try {
                                     if (error.networkResponse.statusCode != 0) {
                                         Toast.makeText(LoginActivity.this,
                                                 "Erro: " + error.networkResponse.statusCode,
                                                 Toast.LENGTH_LONG)
                                                 .show();
-                                        pDialog.hide();
                                     } else {
                                         Toast.makeText(LoginActivity.this,
                                                 "Erro: " + error.getMessage(),
                                                 Toast.LENGTH_LONG)
                                                 .show();
-                                        pDialog.hide();
                                     }
                                 } catch(Exception e){
                                     Toast.makeText(LoginActivity.this,
                                             "Execeção: " + e.getMessage(),
                                             Toast.LENGTH_LONG)
                                             .show();
-                                    pDialog.hide();
                                 }
                             }
                         });
                 RequestQueue requestQueue = Volley.newRequestQueue(this);
                 requestQueue.add(stringRequest);
             } catch (JSONException e) {
+                hideProgressDialog();
                 e.printStackTrace();
                 Toast.makeText(LoginActivity.this,
                         "JSONException: " + e,
                         Toast.LENGTH_LONG)
                         .show();
             } catch (IOException e) {
+                hideProgressDialog();
                 e.printStackTrace();
             }
         }
@@ -146,5 +150,11 @@ public class LoginActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    public void hideProgressDialog(){
+        if(pDialog.isShowing()){
+            pDialog.dismiss();
+        }
     }
 }

@@ -8,15 +8,17 @@ public class User {
     private String user;
     private String pass;
     private String token;
+    private boolean voted;
 
     public User() {
     }
 
-    public User(long codU, String user, String pass, String token){
+    public User(long codU, String user, String pass, String token, boolean voted){
         this.setCodU(codU);
         this.setUser(user);
         this.setPass(pass);
         this.setToken(token);
+        this.setVoted(voted);
     }
 
     public User(String user, String pass) {
@@ -54,5 +56,13 @@ public class User {
 
     public void setCodU(long codU) {
         this.codU = codU;
+    }
+
+    public boolean isVoted() {
+        return voted;
+    }
+
+    public void setVoted(boolean voted) {
+        this.voted = voted;
     }
 }

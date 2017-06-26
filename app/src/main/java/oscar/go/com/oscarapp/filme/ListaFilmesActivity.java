@@ -27,11 +27,11 @@ import oscar.go.com.oscarapp.utilities.HttpHandler;
 public class ListaFilmesActivity extends Activity {
 
     private SessionManager session;
+    private int codU;
+    private String userName;
     private ProgressDialog pDialog;
     private ListView list;
     private FilmeListViewAdapter adapter;
-    private int codU;
-    private String userName;
     private Gson gson = new Gson();
     private ArrayList<Filme> infoFilmes = new ArrayList<>();
     private final String url = "https://dl.dropboxusercontent.com/u/40990541/filme.json";
@@ -41,12 +41,8 @@ public class ListaFilmesActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_filmes);
 
-        /*session = new SessionManager(this);
+        session = new SessionManager(this);
         session.checkLogin();
-
-        HashMap<String, String> userLogged = session.getInfoUsuario();
-        codU = Integer.parseInt(userLogged.get(SessionManager.KEY_CODU));
-        userName = userLogged.get(SessionManager.KEY_USER);*/
 
         new GetFilmes().execute();
     }

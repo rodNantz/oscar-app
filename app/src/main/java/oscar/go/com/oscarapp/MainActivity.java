@@ -6,16 +6,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import oscar.go.com.oscarapp.classes.SessionManager;
 import oscar.go.com.oscarapp.diretor.ListaDiretorActivity;
 import oscar.go.com.oscarapp.filme.ListaFilmesActivity;
 import oscar.go.com.oscarapp.voto.VotoActivity;
 
 public class MainActivity extends AppCompatActivity {
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        session = new SessionManager(this);
+        session.checkLogin();
     }
 
     @Override
@@ -41,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.sair:
-                // invalidar a sessao antes de matar o programa ou levar a tela de login
-                super.finish();
+                session.logoutUsuario();
+                //super.finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

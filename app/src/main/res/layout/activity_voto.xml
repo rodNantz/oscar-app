@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="90dp"
         android:layout_height="140dp"
-        android:id="@+id/posterIV"
+        android:id="@+id/posterVoto"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="33dp"
         android:layout_marginTop="97dp"
@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/posterIV" />
 
     <TextView
-        android:id="@+id/nomeDiretorTV"
+        android:id="@+id/nomeDiretorVoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
