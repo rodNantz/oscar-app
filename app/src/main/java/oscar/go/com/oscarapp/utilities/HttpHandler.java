@@ -30,20 +30,6 @@ public class HttpHandler {
                 // pega a resposta
                 InputStream in = new BufferedInputStream(conn.getInputStream());
                 response = convertStreamToString(in);
-            }else if(method.equals("POST")){
-                conn.setRequestMethod("POST");
-                conn.setDoInput(true);
-                conn.setDoOutput(true);
-                OutputStreamWriter output = new OutputStreamWriter(conn.getOutputStream());
-                output.write(params);
-                output.flush();
-                br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder sb = new StringBuilder();
-                String line = null;
-                while ((line = br.readLine()) != null){
-                    sb.append(line).append('\n');
-                }
-                response = sb.toString();
             }
 
         }catch (Exception e){
